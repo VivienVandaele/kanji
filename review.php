@@ -27,7 +27,7 @@
 
         <div>
             <div class="imageSVGTd">
-                <img class="imageSVG" src="<?php echo "images/".$kanji->getName().".svg" ?>">
+                <img class="imageSVG" src="<?php echo "https://github.com/VivienVandaele/kanji/raw/master/images/".$kanji->getName().".svg?sanitize=true" ?>">
             </div>
             <div class="descriptionTable">
                 <table>
@@ -42,7 +42,7 @@
                         </div><?php echo "<a target='_blank' href='http://jisho.org/search/".$kanji->getCharacter()." %23kanji'>Jisho : ".$kanji->getCharacter()."</a>" ?></td>
                         <td class="reviewKanji2"><span class="description">Radical</span><br>
                             <div class="radical">
-                            <img class="radicalImage" src="<?php echo "radical/".$kanji->getRadicalName().".svg" ?>">
+                            <img class="radicalImage" src="<?php echo "https://github.com/VivienVandaele/kanji/raw/master/radical/".$kanji->getRadicalName().".svg?sanitize=true" ?>">
                                 <?php echo $kanji->getRadicalHiragana() ?><br>
                                 <?php echo $kanji->getRadicalMeaning() ?>
                             </div>
