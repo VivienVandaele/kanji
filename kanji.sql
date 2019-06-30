@@ -19,7 +19,6 @@
 -- Table structure for table `Kanji`
 --
 
-DROP TABLE IF EXISTS `Kanji`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Kanji` (
@@ -58,7 +57,6 @@ UNLOCK TABLES;
 -- Table structure for table `Vocabulary`
 --
 
-DROP TABLE IF EXISTS `Vocabulary`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Vocabulary` (
