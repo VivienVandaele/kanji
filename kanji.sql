@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -19,6 +19,7 @@
 -- Table structure for table `Kanji`
 --
 
+DROP TABLE IF EXISTS `Kanji`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Kanji` (
@@ -40,7 +41,7 @@ CREATE TABLE `Kanji` (
   `toTestMeaning` tinyint(4) NOT NULL DEFAULT 0,
   `testable` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=349 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=350 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +50,7 @@ CREATE TABLE `Kanji` (
 
 LOCK TABLES `Kanji` WRITE;
 /*!40000 ALTER TABLE `Kanji` DISABLE KEYS */;
-INSERT INTO `Kanji` VALUES ('one hito ichi','一','one','ひと','イチ','https://app.kanjialive.com/一',-1,'2019-06-30 12:29:52',342,'⼀','ichi','いち','one, horizontal stroke',1,1,1,1),('face kao gan','顔','face','かお','ガン','https://app.kanjialive.com/顔',-1,'2019-06-30 12:41:27',343,'⾴','oogai','おおがい','head, page',18,1,1,1),('sword katana tou','刀','sword','かたな','トウ','https://app.kanjialive.com/刀',-1,'2019-06-30 15:53:05',344,'⼑','katana','かたな','knife, sword',2,1,1,1),('heart kokoro shin','心','heart','こころ','シン','https://app.kanjialive.com/心',-1,'2019-06-30 15:53:05',345,'⼼','kokoro','こころ','heart, mind, spirit',4,1,1,1),('sell u, uru bai','売','sell','う','バイ','https://app.kanjialive.com/売',-1,'2019-06-30 15:53:05',346,'','samuraikanmuri','さむらいかんむり','man, scholar, samurai',7,1,1,1),('plain, original hara gen','原','plain, original','はら','ゲン','https://app.kanjialive.com/原',-1,'2019-06-30 15:53:05',347,'⼚','gandare','がんだれ','cliff',10,1,1,1),('district, ward n-a ku','区','district, ward','n/a','ク','https://app.kanjialive.com/区',-1,'2019-06-30 16:03:33',348,'⼕','hakogamae','はこがまえ','box',4,0,0,1);
+INSERT INTO `Kanji` VALUES ('one hito ichi','一','one','ひと','イチ','https://app.kanjialive.com/一',-1,'2019-06-30 21:20:56',349,'⼀','ichi','いち','one, horizontal stroke',1,0,0,1);
 /*!40000 ALTER TABLE `Kanji` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,6 +58,7 @@ UNLOCK TABLES;
 -- Table structure for table `Vocabulary`
 --
 
+DROP TABLE IF EXISTS `Vocabulary`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Vocabulary` (
@@ -92,4 +94,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-30 16:00:39
+-- Dump completed on 2019-06-30 21:11:23
