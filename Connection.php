@@ -4,7 +4,7 @@ class Connection{
 
     private function __construct(){
         try{
-            self::$bdd = new PDO('mysql:host=localhost;dbname=kanji', 'root', '');
+            self::$bdd = new PDO('mysql:host=localhost:8080;dbname=kanji', 'root', '');
         }
         catch(Exception $e){
             die('Erreur : '.$e->getMessage());
