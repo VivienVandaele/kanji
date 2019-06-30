@@ -1,0 +1,269 @@
+body{
+    --color-background: white;
+    --font-color: rgb(51, 51, 51);
+    background-color: var(--color-background) !important;
+}
+
+.nightMode{
+    --color-background: #2f343f;
+    --font-color: rgb(251, 251, 251);
+}
+
+.page {
+    padding-top: 15px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    color: var(--font-color);
+}
+@media (min-width: 768px) {
+    .page {
+        width: 750px;
+    }
+}
+@media (min-width: 992px) {
+    .page {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px) {
+    .page {
+        width: 1170px;
+    }
+}
+
+.table > tbody > tr:first-child > td {
+    font-size: 23px;
+    border: none;
+    color: var(--font-color);
+    background-color: var(--color-background) !important;
+}
+
+/*
+ * For night mode
+.table > tbody >  .danger > td {
+    background-color: #3f444f !important;
+    color: white;
+}
+*/
+
+.table > tbody > tr > td {
+    color: rgb(51, 51, 51);
+}
+
+td{
+    vertical-align: top;
+    text-align: center;
+}
+
+table{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.page > table{
+    margin-bottom: 0px;
+}
+
+.miniature{
+    width: 30px;
+}
+
+.review{
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    left: 0;
+    font-size: 25px;
+    cursor: pointer;
+    display: flex;
+}
+
+.reviewKanjiHeader{
+    text-align: center;
+    padding: 5px;
+    background: indianred;
+    border-bottom: 2px solid brown;
+    width: 100%;
+}
+
+.reviewKanjiHeader:hover{
+    color: darkred;
+}
+.reviewKanjiHeader:active{
+    color: #cd0000;
+}
+
+.testKanjiHeader{
+    text-align: center;
+    padding: 5px;
+    background: seagreen;
+    border-bottom: 2px solid darkgreen;
+    border-left: 2px solid darkgreen;
+    width: 100%;
+}
+.testKanjiHeader:hover{
+    color: darkgreen;
+}
+.testKanjiHeader:active{
+    color: green;
+}
+
+.testMeaningHeader{
+    text-align: center;
+    padding: 5px;
+    background: #006699;
+    border-bottom: 2px solid darkblue;
+    border-left: 2px solid darkblue;
+    width: 100%;
+}
+.testMeaningHeader:hover{
+    color: darkblue;
+}
+.testMeaningHeader:active{
+    color: darkslateblue;
+}
+
+.menu{
+    position: absolute;
+    left: 0px;
+}
+
+.descriptionTable{
+    width: 100%;
+    display: inline-block;
+}
+
+@media (min-width: 992px){
+    .descriptionTable{
+        width: 65%;
+    }
+}
+
+.descriptionTable > table{
+    width: 100%;
+    margin-top: 0px;
+}
+
+.imageSVGTd{
+    text-align: left;
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+}
+
+.setVisibility{
+    visibility: hidden;
+}
+
+.imageSVG{
+    padding-top: 0;
+    height: 200px;
+}
+
+@media (min-width: 764px){
+    .imageSVG{
+        height: auto;
+    }
+}
+
+.reviewKanji{
+    padding-top: 0px;
+    line-height: 30px;
+    font-size: 17px;
+}
+
+@media (min-width: 992px) {
+    .reviewKanji{
+        padding-top: 80px;
+        font-size: 20px;
+        line-height: 40px;
+    }
+}
+
+.reviewKanji2{
+    padding-top: 40px;
+    line-height: 30px;
+    font-size: 17px;
+}
+
+@media (min-width: 992px) {
+    .reviewKanji2{
+        font-size: 20px;
+        line-height: 40px;
+    }
+}
+
+.description{
+    vertical-align: top;
+    font-weight: bold;
+}
+
+.radicalImage{
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+.radical{
+    display: flex;
+    padding-top: 3px;
+    line-height: 1.7;
+    justify-content: center;
+}
+
+.links{
+    line-height: 10px;
+}
+
+.boutons{
+    display: block;
+    margin-top: 50px;
+}
+
+.boutonOk{
+    float: right;
+    width: 100px;
+    margin-right: 25px;
+}
+
+.boutonLater{
+    float: left;
+    width: 100px;
+    margin-left: 25px;
+}
+
+.glyphiconOk{
+    color: green;
+}
+
+.glyphiconChevron{
+    color: darkblue;
+}
+
+.glyphiconLater{
+    color: #cc0000;
+}
+
+.listKanji{
+    cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    .listKanji{
+        font-size: 20px;
+    }
+}
+
+.menu-onglet{
+    margin-top: 70px;
+}
+
+#form-add{
+    margin-top: 40px;
+}
+
+.form-control{
+    font-size: 25px;
+    width: 700px;
+}
