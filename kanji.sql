@@ -50,7 +50,7 @@ CREATE TABLE `Kanji` (
 
 LOCK TABLES `Kanji` WRITE;
 /*!40000 ALTER TABLE `Kanji` DISABLE KEYS */;
-INSERT INTO `Kanji` VALUES ('one hito ichi','一','one','ひと','イチ','https://app.kanjialive.com/一',-1,'2019-06-30 21:20:56',349,'⼀','ichi','いち','one, horizontal stroke',1,0,0,1);
+INSERT INTO `Kanji` VALUES ('one hito ichi','一','one','ひと','イチ','https://app.kanjialive.com/一',-1,'2019-07-01 08:02:42',349,'⼀','ichi','いち','one, horizontal stroke',1,1,1,1);
 /*!40000 ALTER TABLE `Kanji` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,4 +94,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-01  2:03:59
+-- Dump completed on 2019-07-01  8:37:34
