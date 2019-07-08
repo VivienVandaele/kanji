@@ -41,7 +41,7 @@ CREATE TABLE `Kanji` (
   `toTestMeaning` tinyint(4) NOT NULL DEFAULT 0,
   `testable` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=350 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=360 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `Kanji` (
 
 LOCK TABLES `Kanji` WRITE;
 /*!40000 ALTER TABLE `Kanji` DISABLE KEYS */;
-INSERT INTO `Kanji` VALUES ('one hito ichi','一','one','ひと','イチ','https://app.kanjialive.com/一',-1,'2019-07-01 08:02:42',349,'⼀','ichi','いち','one, horizontal stroke',1,1,1,1);
+INSERT INTO `Kanji` VALUES ('one hito ichi','一','one','ひと','イチ','https://app.kanjialive.com/一',-1,'2019-07-01 08:02:42',349,'⼀','ichi','いち','one, horizontal stroke',1,1,1,1),('two futa, futatsu, futari ni','二','two','ふた','ニ','https://app.kanjialive.com/二',-1,'2019-07-08 08:38:26',350,'⼆','ni','に','two',2,0,0,1),('three mi, mikka, mittsu san','三','three','み','サン','https://app.kanjialive.com/三',-1,'2019-07-08 08:38:30',351,'⼀','ichi','いち','one, horizontal stroke',3,0,0,1),('four yo, yon shi','四','four','よ、よん','シ','https://app.kanjialive.com/四',-1,'2019-07-08 08:38:34',352,'⼞','kunigamae','くにがまえ','border, territorial boundaries',5,0,0,1),('five itsu, itsutsu go','五','five','いつ','ゴ','https://app.kanjialive.com/五',-1,'2019-07-08 08:38:37',353,'⼆','ni','に','two',4,0,0,1),('six mu, mui, muttsu roku','六','six','む、むい','ロク','https://app.kanjialive.com/六',-1,'2019-07-08 08:38:40',354,'⼋','hachi','はち','eight',4,0,0,1),('seven nana, nano, nanatsu shichi','七','seven','なな、なの','シチ','https://app.kanjialive.com/七',-1,'2019-07-08 08:38:45',355,'⼀','ichi','いち','one, horizontal stroke',2,0,0,1),('eight ya, you, yattsu hachi','八','eight','や、よう','ハチ','https://app.kanjialive.com/八',-1,'2019-07-08 08:38:50',356,'⼋','hachi','はち','eight',2,0,0,1),('nine kokono, kokonotsu kyuu, ku','九','nine','ここの','キュウ、ク','https://app.kanjialive.com/九',-1,'2019-07-08 08:38:54',357,'⼄','otsu','おつ','the second ',2,0,0,1),('ten too, to juu','十','ten','とお、と','ジュウ','https://app.kanjialive.com/十',-1,'2019-07-08 08:39:03',358,'⼗','juu','じゅう','ten',2,0,0,1),('zero n-a rei','零','zero','n/a','レイ','https://app.kanjialive.com/零',-1,'2019-07-08 08:39:09',359,'⻗','amekanmuri','あめかんむり','rain',13,0,0,1);
 /*!40000 ALTER TABLE `Kanji` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,4 +94,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-06 23:55:06
+-- Dump completed on 2019-07-08  8:38:23
