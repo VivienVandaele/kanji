@@ -1,8 +1,8 @@
--- MySQL dump 10.17  Distrib 10.3.14-MariaDB, for Android (aarch64)
+-- MySQL dump 10.17  Distrib 10.3.14-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: kanji
 -- ------------------------------------------------------
--- Server version	5.1.62
+-- Server version	10.3.14-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,18 +30,18 @@ CREATE TABLE `Kanji` (
   `onyomi` text NOT NULL,
   `linkKanjiAlive` text NOT NULL,
   `day` int(11) NOT NULL,
-  `dateNext` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `dateNext` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `radicalChar` text NOT NULL,
   `radicalName` text NOT NULL,
   `radicalHiragana` text NOT NULL,
   `radicalMeaning` text NOT NULL,
   `strokes` int(11) NOT NULL,
-  `toTestKanji` tinyint(4) NOT NULL DEFAULT '0',
-  `toTestMeaning` tinyint(4) NOT NULL DEFAULT '0',
-  `testable` tinyint(4) NOT NULL DEFAULT '1',
+  `toTestKanji` tinyint(4) NOT NULL DEFAULT 0,
+  `toTestMeaning` tinyint(4) NOT NULL DEFAULT 0,
+  `testable` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=360 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=MyISAM AUTO_INCREMENT=379 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `Kanji` (
 
 LOCK TABLES `Kanji` WRITE;
 /*!40000 ALTER TABLE `Kanji` DISABLE KEYS */;
-INSERT INTO `Kanji` VALUES ('one hito ichi','一','one','ひと','イチ','https://app.kanjialive.com/一',0,'2019-07-15 01:10:26',349,'⼀','ichi','いち','one, horizontal stroke',1,0,0,1),('two futa, futatsu, futari ni','二','two','ふた','ニ','https://app.kanjialive.com/二',0,'2019-07-15 01:10:42',350,'⼆','ni','に','two',2,0,0,1),('three mi, mikka, mittsu san','三','three','み','サン','https://app.kanjialive.com/三',0,'2019-07-15 01:10:32',351,'⼀','ichi','いち','one, horizontal stroke',3,0,0,1),('four yo, yon shi','四','four','よ、よん','シ','https://app.kanjialive.com/四',0,'2019-07-15 01:10:44',352,'⼞','kunigamae','くにがまえ','border, territorial boundaries',5,0,0,1),('five itsu, itsutsu go','五','five','いつ','ゴ','https://app.kanjialive.com/五',0,'2019-07-15 01:10:41',353,'⼆','ni','に','two',4,0,0,1),('six mu, mui, muttsu roku','六','six','む、むい','ロク','https://app.kanjialive.com/六',0,'2019-07-15 01:10:31',354,'⼋','hachi','はち','eight',4,0,0,1),('seven nana, nano, nanatsu shichi','七','seven','なな、なの','シチ','https://app.kanjialive.com/七',0,'2019-07-15 01:10:27',355,'⼀','ichi','いち','one, horizontal stroke',2,0,0,1),('eight ya, you, yattsu hachi','八','eight','や、よう','ハチ','https://app.kanjialive.com/八',0,'2019-07-15 01:10:39',356,'⼋','hachi','はち','eight',2,0,0,1),('nine kokono, kokonotsu kyuu, ku','九','nine','ここの','キュウ、ク','https://app.kanjialive.com/九',0,'2019-07-15 01:10:40',357,'⼄','otsu','おつ','the second ',2,0,0,1),('ten too, to juu','十','ten','とお、と','ジュウ','https://app.kanjialive.com/十',0,'2019-07-15 01:10:23',358,'⼗','juu','じゅう','ten',2,0,0,1),('zero n-a rei','零','zero','n/a','レイ','https://app.kanjialive.com/零',0,'2019-07-15 01:10:35',359,'⻗','amekanmuri','あめかんむり','rain',13,0,0,1);
+INSERT INTO `Kanji` VALUES ('one hito ichi','一','one','ひと','イチ','https://app.kanjialive.com/一',0,'2019-07-15 01:10:26',349,'⼀','ichi','いち','one, horizontal stroke',1,0,0,1),('two futa, futatsu, futari ni','二','two','ふた','ニ','https://app.kanjialive.com/二',0,'2019-07-15 01:10:42',350,'⼆','ni','に','two',2,0,0,1),('three mi, mikka, mittsu san','三','three','み','サン','https://app.kanjialive.com/三',0,'2019-07-15 01:10:32',351,'⼀','ichi','いち','one, horizontal stroke',3,0,0,1),('four yo, yon shi','四','four','よ、よん','シ','https://app.kanjialive.com/四',0,'2019-07-15 01:10:44',352,'⼞','kunigamae','くにがまえ','border, territorial boundaries',5,0,0,1),('five itsu, itsutsu go','五','five','いつ','ゴ','https://app.kanjialive.com/五',0,'2019-07-15 01:10:41',353,'⼆','ni','に','two',4,0,0,1),('six mu, mui, muttsu roku','六','six','む、むい','ロク','https://app.kanjialive.com/六',0,'2019-07-15 01:10:31',354,'⼋','hachi','はち','eight',4,0,0,1),('seven nana, nano, nanatsu shichi','七','seven','なな、なの','シチ','https://app.kanjialive.com/七',0,'2019-07-15 01:10:27',355,'⼀','ichi','いち','one, horizontal stroke',2,0,0,1),('eight ya, you, yattsu hachi','八','eight','や、よう','ハチ','https://app.kanjialive.com/八',0,'2019-07-15 01:10:39',356,'⼋','hachi','はち','eight',2,0,0,1),('nine kokono, kokonotsu kyuu, ku','九','nine','ここの','キュウ、ク','https://app.kanjialive.com/九',0,'2019-07-15 01:10:40',357,'⼄','otsu','おつ','the second ',2,0,0,1),('ten too, to juu','十','ten','とお、と','ジュウ','https://app.kanjialive.com/十',0,'2019-07-15 01:10:23',358,'⼗','juu','じゅう','ten',2,0,0,1),('zero n-a rei','零','zero','n/a','レイ','https://app.kanjialive.com/零',0,'2019-07-15 01:10:35',359,'⻗','amekanmuri','あめかんむり','rain',13,0,0,1),('human being, person hito jin, nin','人','human being, person','ひと','ジン、ニン','https://app.kanjialive.com/人',0,'2019-07-15 01:59:27',360,'⼈','hito','ひと','person',2,0,0,1),('enter, put in i, hai, iri, iru, hairu, ireru, ire nyuu','入','enter, put in','い、はい','ニュウ','https://app.kanjialive.com/入',0,'2019-07-15 01:59:31',361,'⼊','iru','いる','to enter',2,0,0,1),('up ue, uwa, kami, a, ageru, agaru, nobo, noboru jou, shou','上','up','うえ、うわ、かみ、あ、のぼ','ジョウ、ショウ','https://app.kanjialive.com/上',0,'2019-07-15 01:59:42',362,'⼀','ichi','いち','one, horizontal stroke',3,0,0,1),('down shita, shimo, sa, sagaru, sageru, kuda, kudaru, kudasai, o, orosu, oriru ka, ge','下','down','した、しも、さ、くだ、お','カ、ゲ','https://app.kanjialive.com/下',0,'2019-07-15 01:57:52',363,'⼀','ichi','いち','one, horizontal stroke',3,0,0,1),('thousand chi sen','千','thousand','ち','セン','https://app.kanjialive.com/千',0,'2019-07-15 01:59:49',364,'⼗','juu','じゅう','ten',3,0,0,1),('mouth kuchi kou, ku','口','mouth','くち','コウ、ク','https://app.kanjialive.com/口',0,'2019-07-15 01:57:39',365,'⼝','kuchi','くち','mouth',3,0,0,1),('power, force chikara ryoku, riki','力','power, force','ちから','リョク、リキ','https://app.kanjialive.com/力',0,'2019-07-15 01:58:15',366,'⼒','chikara','ちから','power',2,0,0,1),('soil, earth, ground tsuchi do, to','土','soil, earth, ground','つち','ド、ト','https://app.kanjialive.com/土',0,'2019-07-15 02:40:57',367,'⼟','tsuchi','つち','earth',3,0,0,1),('evening yuu seki','夕','evening','ゆう','セキ','https://app.kanjialive.com/夕',0,'2019-07-15 02:40:46',368,'⼣','yuube','ゆうべ','evening',3,0,0,1),('big oo, ookii dai, tai','大','big','おお','ダイ、タイ','https://app.kanjialive.com/大',0,'2019-07-15 02:39:37',369,'⼤','dai','だい','large, big',3,0,0,1),('woman onna, me jo, nyo, nyou','女','woman','おんな、め','ジョ、ニョ、ニョウ','https://app.kanjialive.com/女',0,'2019-07-15 02:39:25',370,'⼥','onna','おんな','woman',3,0,0,1),('child, noun suffix ko shi, su','子','child, noun suffix','こ','シ、ス','https://app.kanjialive.com/子',0,'2019-07-15 02:40:02',371,'⼦','ko','こ','child, son',3,0,0,1),('small chii, chiisai, ko, o shou','小','small','ちい、こ、お','ショウ','https://app.kanjialive.com/小',0,'2019-07-15 02:40:22',372,'⼩','shou','しょう','small',3,0,0,1),('mountain yama san','山','mountain','やま','サン','https://app.kanjialive.com/山',0,'2019-07-15 02:39:17',373,'⼭','yama','やま','mountain',3,0,0,1),('river kawa sen','川','river','かわ','セン','https://app.kanjialive.com/川',-1,'2019-07-14 16:51:40',374,'川','sanbongawa','さんぼんがわ','river',3,0,0,1),('middle, in naka chuu','中','middle, in','なか','チュウ','https://app.kanjialive.com/中',-1,'2019-07-14 16:52:11',375,'⼁','tatebou','たてぼう','vertical stroke',4,0,0,1),('circle, yen maru, marui en','円','circle, yen','まる','エン','https://app.kanjialive.com/円',-1,'2019-07-14 16:52:30',376,'⼌ ','keigamae','けいがまえ','to enclose',4,0,0,1),('heaven ame, ama ten','天','heaven','あめ、あま','テン','https://app.kanjialive.com/天',-1,'2019-07-14 16:52:58',377,'⼤','dai','だい','large, big',4,0,0,1),('hand te, ta shu, zu','手','hand','て、た','シュ、ズ','https://app.kanjialive.com/手',-1,'2019-07-14 16:53:15',378,'⼿','te','て','hand',4,0,0,1);
 /*!40000 ALTER TABLE `Kanji` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,12 +65,12 @@ CREATE TABLE `Vocabulary` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `chara` text NOT NULL,
   `meaning` text NOT NULL,
-  `day` int(11) NOT NULL DEFAULT '1',
-  `dateNext` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `toTestKanji` tinyint(4) NOT NULL DEFAULT '0',
-  `toTestMeaning` tinyint(4) NOT NULL DEFAULT '0',
-  `testable` tinyint(4) NOT NULL DEFAULT '1',
-  `word` tinyint(4) NOT NULL DEFAULT '1',
+  `day` int(11) NOT NULL DEFAULT 1,
+  `dateNext` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `toTestKanji` tinyint(4) NOT NULL DEFAULT 0,
+  `toTestMeaning` tinyint(4) NOT NULL DEFAULT 0,
+  `testable` tinyint(4) NOT NULL DEFAULT 1,
+  `word` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=148 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -94,4 +94,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-14 15:10:56
+-- Dump completed on 2019-07-14 16:43:38
