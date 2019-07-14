@@ -1,7 +1,7 @@
 <?php
     mb_internal_encoding("UTF-8");//Sets the internal character encoding to UTF-8, for mb_substr to work
     include_once("header.html");
-    include_once("word.php");
+    include_once("Word.php");
 
     if(isset($_GET["idV"])){
         $wordToUpdate = getWord($_GET["idV"]);
