@@ -33,7 +33,7 @@ body{
 }
 
 .table > tbody > tr:first-child > td {
-    font-size: 23px;
+    font-size: 18px;
     border: none;
     color: var(--font-color);
     background-color: var(--color-background) !important;
