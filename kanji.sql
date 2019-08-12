@@ -1,8 +1,8 @@
--- MySQL dump 10.17  Distrib 10.3.14-MariaDB, for Android (aarch64)
+-- MySQL dump 10.17  Distrib 10.3.14-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: kanji
 -- ------------------------------------------------------
--- Server version	5.1.62
+-- Server version	10.3.14-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,16 +30,16 @@ CREATE TABLE `Kanji` (
   `onyomi` text NOT NULL,
   `linkKanjiAlive` text NOT NULL,
   `day` int(11) NOT NULL,
-  `dateNext` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `dateNext` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `radicalChar` text NOT NULL,
   `radicalName` text NOT NULL,
   `radicalHiragana` text NOT NULL,
   `radicalMeaning` text NOT NULL,
   `strokes` int(11) NOT NULL,
-  `toTestKanji` tinyint(4) NOT NULL DEFAULT '0',
-  `toTestMeaning` tinyint(4) NOT NULL DEFAULT '0',
-  `testable` tinyint(4) NOT NULL DEFAULT '1',
+  `toTestKanji` tinyint(4) NOT NULL DEFAULT 0,
+  `toTestMeaning` tinyint(4) NOT NULL DEFAULT 0,
+  `testable` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=441 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -65,12 +65,12 @@ CREATE TABLE `Vocabulary` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `chara` text NOT NULL,
   `meaning` text NOT NULL,
-  `day` int(11) NOT NULL DEFAULT '1',
-  `dateNext` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `toTestKanji` tinyint(4) NOT NULL DEFAULT '0',
-  `toTestMeaning` tinyint(4) NOT NULL DEFAULT '0',
-  `testable` tinyint(4) NOT NULL DEFAULT '1',
-  `word` tinyint(4) NOT NULL DEFAULT '1',
+  `day` int(11) NOT NULL DEFAULT 1,
+  `dateNext` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `toTestKanji` tinyint(4) NOT NULL DEFAULT 0,
+  `toTestMeaning` tinyint(4) NOT NULL DEFAULT 0,
+  `testable` tinyint(4) NOT NULL DEFAULT 1,
+  `word` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=149 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -94,4 +94,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-05  7:29:26
+-- Dump completed on 2019-08-12  1:32:46
