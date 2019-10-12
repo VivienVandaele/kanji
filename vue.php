@@ -35,7 +35,7 @@
     if(isset($allKanji)){
         foreach ($allKanji as $kanji){?>
             <tr <?php echo "onclick=document.location.href='review.php?id=".$kanji->getId()."'" ?> class=<?php echo "'listKanji ".$kanji->getClass()."'" ?>>
-                <td><img class="miniature" src="<?php echo "https://raw.githubusercontent.com/VivienVandaele/kanji/master/images/".$kanji->getName().".svg?sanitize=true" ?>"></td>
+                <td><img class="miniature" src="<?php echo "images/".$kanji->getName().".svg" ?>"></td>
                 <td><?php echo $kanji->getMeaning() ?></td>
                 <td><?php echo $kanji->getKun() ?></td>
                 <td><?php echo $kanji->getOn() ?></td>

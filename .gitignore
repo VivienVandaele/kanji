@@ -1,3 +1,8 @@
 review.php
 vue.php
 test.php
+composer*
+vendor
+.htaccess
+cache
+favicon.*
