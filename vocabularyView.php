@@ -3,15 +3,15 @@
             <div class="review">
                 <?php if($numberToReview>0){ ?>
                 <div class="reviewKanjiHeader" onclick="document.location.href='vocabularyReview.php?word=<?php echo $_GET["word"] ?>'">
-                    <span><?php echo $numberToReview;if($_GET["word"]==1) echo " word"; else echo " sentence";if($numberToReview!=1) echo "s" ?> to review</span>
+                    <span><?php echo $numberToReview ?></span>
                 </div>
                 <?php }if($numberMeaning>0){ ?>
                 <div class="testMeaningHeader" onclick="document.location.href='vocabularyTest.php?test=1&word=<?php echo $_GET["word"] ?>'">
-                    <span><?php echo $numberMeaning ?> meaning test</span>
+                    <span><?php echo $numberMeaning ?></span>
                 </div>
                 <?php }if($numberKanji>0){ ?>
                 <div class="testKanjiHeader" onclick="document.location.href='vocabularyTest.php?test=2&word=<?php echo $_GET["word"] ?>'">
-                    <span><?php echo $numberKanji ?> japanese test</span>
+                    <span><?php echo $numberKanji ?></span>
                 </div>
                 <?php } ?>
             </div>
