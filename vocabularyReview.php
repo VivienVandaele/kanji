@@ -6,9 +6,9 @@
     if(isset($_GET["idV"])){
         $wordToUpdate = getWord($_GET["idV"]);
         if(wordToReview($wordToUpdate)) {
-            $wordToUpdate->update();
             $wordToUpdate->setToTestMeaning(1);
             $wordToUpdate->setToTestKanji(1);
+            $wordToUpdate->update();
         }
     }
     if(isset($_GET["idL"])){
