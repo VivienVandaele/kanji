@@ -38,7 +38,7 @@
         <button onclick="document.location.href='index.php'" class="btn btn-link btn-lg menu"><span class="glyphicon glyphicon-align-justify"></span></button>
         <div>
             <div class="imageSVGTd toHideTestKanji">
-                <img class="imageSVG" src="<?php echo "https://raw.githubusercontent.com/VivienVandaele/kanji/master/images/".$kanji->getName().".svg?sanitize=true" ?>">
+                <img class="imageSVG" src="<?php echo "images/".$kanji->getName().".svg" ?>">
                 <br><span class="toHideTestMeaning btn btn-link" onclick="discard(<?php echo $kanji->getId() ?>)">Discard</span>
             </div>
             <div class="descriptionTable">
@@ -54,7 +54,7 @@
                         </div><?php echo "<a target='_blank' href='http://jisho.org/search/".$kanji->getCharacter()." %23kanji'>Jisho : ".$kanji->getCharacter()."</a>" ?></td>
                         <td class="reviewKanji2"><span class="description">Radical</span><br>
                             <div class="radical">
-                            <img class="radicalImage" src="<?php echo "https://raw.githubusercontent.com/VivienVandaele/kanji/master/radical/".$kanji->getRadicalName().".svg?sanitize=true" ?>">
+                            <img class="radicalImage" src="<?php echo "radical/".$kanji->getRadicalName().".svg" ?>">
                                 <?php echo $kanji->getRadicalHiragana() ?><br>
                                 <?php echo $kanji->getRadicalMeaning() ?></td>
                             </div>
