@@ -1,4 +1,8 @@
 <body>
+<script>
+    Mousetrap.bind('b', function() { document.location.href='vocabularyTest.php?test=1&word=1' });
+    Mousetrap.bind('v', function() { document.location.href='vocabularyTest.php?test=2&word=1' });
+</script>
         <?php if($numberKanji>0 || $numberMeaning>0 || $numberToReview>0){?>
             <div class="review">
                 <?php if($numberToReview>0){ ?>
@@ -22,7 +26,7 @@
             <div class="menu-onglet btn-group" role="group" aria-label="...">
                 <button onclick="document.location.href='index.php'" type="button" class="btn btn-default">Kanji</button>
                 <button onclick="document.location.href='vocabularyController.php?word=1'" type="button" class="btn <?php if($_GET['word']==1) echo 'btn-info';else echo 'btn-default' ?>">Vocabulary</button>
-                <button onclick="document.location.href='vocabularyController.php?word=2'" type="button" class="btn <?php if($_GET['word']==2) echo 'btn-info';else echo 'btn-default' ?>"">Sentences</button>
+<!--                <button onclick="document.location.href='vocabularyController.php?word=2'" type="button" class="btn <?php if($_GET['word']==2) echo 'btn-info';else echo 'btn-default' ?>"">Sentences</button>-->
             </div>
 
             <form id="form-add" action="vocabularyController.php?word=<?php echo $_GET['word'] ?>" method="post" class="form-inline">

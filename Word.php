@@ -70,15 +70,17 @@ class Word{
     }
 
     public function setTestable($testable){
-        Connection::getBdd()->exec("UPDATE Vocabulary SET testable='".$testable."' WHERE id='".$this->id."'");
+        Connection::getBdd()->exec("UPDATE Vocabulary SET dateNext='".$this->dateNext."', testable='".$testable."' WHERE id='".$this->id."'");
     }
 
     public function setToTestKanji($test){
-        Connection::getBdd()->exec("UPDATE Vocabulary SET toTestKanji='".$test."' WHERE id='".$this->id."'");
+        Connection::getBdd()->exec("UPDATE Vocabulary SET dateNext='".$this->dateNext."', toTestKanji='".$test."' WHERE id='".$this->id."'");
+        $this->toTestKanji=$test;
     }
 
     public function setToTestMeaning($test){
-        Connection::getBdd()->exec("UPDATE Vocabulary SET toTestMeaning='".$test."' WHERE id='".$this->id."'");
+        Connection::getBdd()->exec("UPDATE Vocabulary SET dateNext='".$this->dateNext."', toTestMeaning='".$test."' WHERE id='".$this->id."'");
+        $this->toTestMeaning=$test;
     }
 
     public function getId(){

@@ -29,6 +29,7 @@
     }
 ?>
 <script>
+    Mousetrap.bind('m', function() { document.location.href='vocabularyController.php?word=1' });
     Mousetrap.bind('c', function() { document.location.href='vocabularyReview.php?word=<?php echo $_GET["word"] ?>&idL=<?php echo $word->getId() ?>' });
     Mousetrap.bind('v', function() { document.location.href='vocabularyReview.php?word=<?php echo $_GET["word"] ?>&idV=<?php echo $word->getId() ?>' });
 </script>

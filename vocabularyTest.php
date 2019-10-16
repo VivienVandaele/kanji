@@ -33,6 +33,7 @@
     Mousetrap.bind('space', function() { <?php if($_GET["test"]==1){ ?>setVisibilityTestMeaning()  <?php }   else{ ?> setVisibilityTestKanji() <?php } ?> });
     Mousetrap.bind('v', function() { document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>&idV=<?php echo $word->getId() ?>' });
     Mousetrap.bind('c', function() { document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>' });
+    Mousetrap.bind('m', function() { document.location.href='vocabularyController.php?word=1' });
 
 
 </script>
