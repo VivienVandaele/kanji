@@ -66,7 +66,7 @@ class Word{
     }
 
     public function reviewlater(){
-        connection::getbdd()->exec("update Vocabulary set datenext='".date('y-m-d h:i:s', strtotime('+0day', date(time())))."', day='".$this->day."' where id='".$this->id."'");
+        connection::getbdd()->exec("update Vocabulary set datenext='".date('Y-m-d H:i:s', strtotime('+0day', date(time())))."', day='".$this->day."' where id='".$this->id."'");
     }
 
     public function setTestable($testable){
@@ -118,103 +118,103 @@ class Word{
 
 include_once("Connection.php");
 
-function getOneToTestMeaningWord(){
-    $allKanji = getAllToTestMeaningWord();
+function getOneToTestMeaningWordW(){
+    $allKanji = getAllToTestMeaningWordW();
     return $allKanji[rand(0, count($allKanji)-1)];
 }
 
-function getOneToTestKanjiWord(){
-    $allKanji = getAllToTestKanjiWord();
+function getOneToTestKanjiWordW(){
+    $allKanji = getAllToTestKanjiWordW();
     return $allKanji[rand(0, count($allKanji)-1)];
 }
 
-function getAllToTestMeaningWord(){
+function getAllToTestMeaningWordW(){
     $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE toTestMeaning=1 AND testable=1 AND word=1 ORDER BY dateNext");
     while($data = $req->fetch())
         $array[] = new Word($data['id'], $data['chara'], $data['meaning'], $data['day'], $data['dateNext'], $data['toTestKanji'], $data['toTestMeaning'], $data['testable'], $data['word']);
     if(isset($array)) return $array;
 }
 
-function getAllToTestKanjiWord(){
+function getAllToTestKanjiWordW(){
     $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE toTestKanji=1 AND testable=1 AND word=1 ORDER BY dateNext");
     while($data = $req->fetch())
         $array[] = new Word($data['id'], $data['chara'], $data['meaning'], $data['day'], $data['dateNext'], $data['toTestKanji'], $data['toTestMeaning'], $data['testable'], $data['word']);
     if(isset($array)) return $array;
 }
 
-function getOneToTestMeaningSentence(){
-    $allKanji = getAllToTestMeaningSentence();
+function getOneToTestMeaningSentenceW(){
+    $allKanji = getAllToTestMeaningSentenceW();
     return $allKanji[rand(0, count($allKanji)-1)];
 }
 
-function getOneToTestKanjiSentence(){
-    $allKanji = getAllToTestKanjiSentence();
+function getOneToTestKanjiSentenceW(){
+    $allKanji = getAllToTestKanjiSentenceW();
     return $allKanji[rand(0, count($allKanji)-1)];
 }
 
-function getAllToTestMeaningSentence(){
+function getAllToTestMeaningSentenceW(){
     $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE toTestMeaning=1 AND testable=1 AND word=0 ORDER BY dateNext");
     while($data = $req->fetch())
         $array[] = new Word($data['id'], $data['chara'], $data['meaning'], $data['day'], $data['dateNext'], $data['toTestKanji'], $data['toTestMeaning'], $data['testable'], $data['word']);
     if(isset($array)) return $array;
 }
 
-function getAllToTestKanjiSentence(){
+function getAllToTestKanjiSentenceW(){
     $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE toTestKanji=1 AND testable=1 AND word=0 ORDER BY dateNext");
     while($data = $req->fetch())
         $array[] = new Word($data['id'], $data['chara'], $data['meaning'], $data['day'], $data['dateNext'], $data['toTestKanji'], $data['toTestMeaning'], $data['testable'], $data['word']);
     if(isset($array)) return $array;
 }
 
-function getAllWords(){
+function getAllWordsW(){
     $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE word=1 ORDER BY dateNext");
     while($data = $req->fetch())
         $array[] = new Word($data['id'], $data['chara'], $data['meaning'], $data['day'], $data['dateNext'], $data['toTestKanji'], $data['toTestMeaning'], $data['testable'], $data['word']);
     if(isset($array)) return $array;
 }
 
-function getAllSentences(){
+function getAllSentencesW(){
     $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE word=0 ORDER BY dateNext");
     while($data = $req->fetch())
         $array[] = new Word($data['id'], $data['chara'], $data['meaning'], $data['day'], $data['dateNext'], $data['toTestKanji'], $data['toTestMeaning'], $data['testable'], $data['word']);
     if(isset($array)) return $array;
 }
 
-function addWord($chara, $meaning){
+function addWordW($chara, $meaning){
     Connection::getBdd()->exec("INSERT INTO Vocabulary (chara, meaning, day, dateNext, word) VALUES ('".$chara."', '".$meaning."', 1, '".date('Y-m-d H:i:s', strtotime('+1day', date(time())))."', 1)");
 }
 
-function addSentence($chara, $meaning){
+function addSentenceW($chara, $meaning){
     Connection::getBdd()->exec("INSERT INTO Vocabulary (chara, meaning, day, dateNext, word) VALUES ('".$chara."', '".$meaning."', 1, '".date('Y-m-d H:i:s', strtotime('+1day', date(time())))."', 0)");
 }
 
-function getWord($id){
+function getWordW($id){
      $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE id='".$id."'");
     while($data = $req->fetch())
         return new Word($data['id'], $data['chara'], $data['meaning'], $data['day'], $data['dateNext'], $data['toTestKanji'], $data['toTestMeaning'], $data['testable'], $data['word']);
 }
 
-function getReviewWord(){
-    $word = getAllWords()[0];
+function getReviewWordW(){
+    $word = getAllWordsW()[0];
     if(isset($word)){
         if($word->getDateNext()<date('Y-m-d H:i:s', strtotime('+0day', date(time()))))
             return $word;
     }
 }
 
-function getReviewSentence(){
-    $word = getAllSentences()[0];
+function getReviewSentenceW(){
+    $word = getAllSentencesW()[0];
     if(isset($word)){
         if($word->getDateNext()<date('Y-m-d H:i:s', strtotime('+0day', date(time()))))
             return $word;
     }
 }
 
-function wordToReview($word){
+function wordToReviewW($word){
     return ($word->getDateNext()<date('Y-m-d H:i:s', strtotime('+0day', date(time()))));
 }
 
-function getNombreARevoir($all){
+function getNombreARevoirW($all){
     if(isset($all)){
         $nb = 0;
         foreach($all as $word){
@@ -226,7 +226,7 @@ function getNombreARevoir($all){
     return 0;
 }
 
-function getNumberToTestMeaning($all){
+function getNumberToTestMeaningW($all){
     $nb = 0;
     if(isset($all)) {
         foreach ($all as $word) {
@@ -237,7 +237,7 @@ function getNumberToTestMeaning($all){
     return $nb;
 }
 
-function getNumberToTestKanji($all){
+function getNumberToTestKanjiW($all){
     $nb = 0;
     if(isset($all)) {
         foreach ($all as $word) {

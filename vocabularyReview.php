@@ -4,26 +4,26 @@
     include_once("Word.php");
 
     if(isset($_GET["idV"])){
-        $wordToUpdate = getWord($_GET["idV"]);
-        if(wordToReview($wordToUpdate)) {
+        $wordToUpdate = getWordW($_GET["idV"]);
+        if(wordToReviewW($wordToUpdate)) {
             $wordToUpdate->setToTestMeaning(1);
             $wordToUpdate->setToTestKanji(1);
             $wordToUpdate->update();
         }
     }
     if(isset($_GET["idL"])){
-        $wordToReviewLater = getWord($_GET["idL"]);
+        $wordToReviewLater = getWordW($_GET["idL"]);
         $wordToReviewLater->reviewlater();
     }
 
     if(isset($_GET["id"])){
-        $word = getWord($_GET["id"]);
+        $word = getWordW($_GET["id"]);
     }
     else {
         if($_GET["word"]==1)
-            $word = getReviewWord();
+            $word = getReviewWordW();
         else
-            $word = getReviewSentence();
+            $word = getReviewSentenceW();
         if (!isset($word))
             header('Location: vocabularyController.php?word='.$_GET["word"]);
     }
@@ -54,7 +54,7 @@
                 </table>
             </div>
         </div>
-        <?php if(wordToReview($word)){?>
+        <?php if(wordToReviewW($word)){?>
         <div class="boutons">
             <button id="boutonLater" onclick="document.location.href='vocabularyReview.php?word=<?php echo $_GET["word"] ?>&idL=<?php echo $word->getId() ?>'" onmouseout="changeColorGlyphiconLater()" onmouseover="changeColorGlyphiconLater()" type="button" class="boutonLater btn btn-lg btn-default" aria-label="Left Align">
                 <span id="glyphiconBoutonLater" class="glyphicon glyphicon-remove glyphiconLater" aria-hidden="true"></span>

@@ -1,6 +1,8 @@
 <?php
     include_once("header.html");
     include_once("Kanji.php");
+    include_once("Word.php");
+    $allWords = getAllWordsW();
     if($_GET["test"]==1) {
         $kanji = getOneToTestMeaning();
         if (!isset($kanji))
@@ -74,6 +76,21 @@
                 <span id="glyphiconBoutonOk" class="glyphicon glyphicon-ok glyphiconOk" aria-hidden="true"></span>
             </button>
         </div>
+
+        <table class="table">
+<?php
+    if(isset($allWords)){
+        foreach ($allWords as $word){
+            if (strpos($word->getCharacter(), $kanji->getCharacter()) !== false) {?>
+            <tr <?php echo "onclick=document.location.href='vocabularyReview.php?id=".$word->getId()."&word=".$_GET['word']."'" ?> class="listKanji toHideTestMeaning toHideTestKanji"">
+                <td><?php echo $word->getCharacter() ?></td>
+                <td><?php echo $word->getMeaning() ?></td>
+            </tr>
+        <?php
+            }
+        }
+    }?>
+    </table>
     </div>
 </body>
 <?php if($_GET["test"]==1) { ?><script>setVisibilityTestMeaning()</script> <?php }else{?><script>setVisibilityTestKanji()</script><?php }?>

@@ -12,14 +12,14 @@ if(isset($_POST["word"])){
 }
 
 if($_GET["word"]==1) {
-    $allWords = getAllWords();
+    $allWords = getAllWordsW();
 }
 else{
-    $allWords = getAllSentences();
+    $allWords = getAllSentencesW();
 }
-$numberKanji = getNumberToTestKanji($allWords);
-$numberMeaning = getNumberToTestMeaning($allWords);
-$numberToReview = getNombreARevoir($allWords);
+$numberKanji = getNumberToTestKanjiW($allWords);
+$numberMeaning = getNumberToTestMeaningW($allWords);
+$numberToReview = getNombreARevoirW($allWords);
 
 include_once("vocabularyView.php");
 ?>

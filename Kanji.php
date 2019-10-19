@@ -101,7 +101,7 @@ class Kanji{
     }
 
     public function reviewlater(){
-        connection::getbdd()->exec("update Kanji set datenext='".date('y-m-d h:i:s', strtotime('+1minutes', date(time())))."', day='".$this->day."' where id='".$this->id."'");
+        connection::getbdd()->exec("update Kanji set datenext='".date('Y-m-d H:i:s', strtotime('+1minutes', date(time())))."', day='".$this->day."' where id='".$this->id."'");
     }
 
     public function setTestable($testable){

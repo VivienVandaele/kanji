@@ -1,6 +1,7 @@
 <?php
     include_once("header.html");
     include_once("Kanji.php");
+    include_once("Word.php");
     if(isset($_GET["id"])){
        $kanji = getKanji($_GET["id"]);
         $nextKanjiId = getNextKanjiId($_GET["id"]);
@@ -11,6 +12,7 @@
         if (!isset($kanji))
             header('Location: index.php');
     }
+    $allWords = getAllWordsW();
 ?>
 <script>
     Mousetrap.bind('h', function() { document.location.href=<?php echo "document.location.href='review.php?id=".$previousKanjiId->getId()."'" ?> });
@@ -60,6 +62,21 @@
                 <span id="glyphiconBoutonOk" class="glyphicon glyphicon-chevron-right glyphiconChevron" aria-hidden="true"></span>
             </button>
         </div>
+
+        <table class="table">
+<?php
+    if(isset($allWords)){
+        foreach ($allWords as $word){
+            if (strpos($word->getCharacter(), $kanji->getCharacter()) !== false) {?>
+            <tr <?php echo "onclick=document.location.href='vocabularyReview.php?id=".$word->getId()."&word=".$_GET['word']."'" ?> class="listKanji">
+                <td><?php echo $word->getCharacter() ?></td>
+                <td><?php echo $word->getMeaning() ?></td>
+            </tr>
+        <?php
+            }
+        }
+    }?>
+    </table>
     </div>
 </body>
 </html>

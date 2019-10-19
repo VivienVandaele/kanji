@@ -4,7 +4,7 @@
     include_once("Word.php");
 
     if(isset($_GET["idV"])){
-        $wordToUpdate = getWord($_GET["idV"]);
+        $wordToUpdate = getWordW($_GET["idV"]);
         if($_GET["test"]==1)
             $wordToUpdate->setToTestMeaning(0);
         else
@@ -13,15 +13,15 @@
 
     if($_GET["test"]==1){
         if($_GET["word"]==1)
-            $word = getOneToTestMeaningWord();
+            $word = getOneToTestMeaningWordW();
         else
-            $word = getOneToTestMeaningSentence();
+            $word = getOneToTestMeaningSentenceW();
     }
     else{
         if($_GET["word"]==1)
-            $word = getOneToTestKanjiWord();
+            $word = getOneToTestKanjiWordW();
         else
-            $word = getOneToTestKanjiSentence();
+            $word = getOneToTestKanjiSentenceW();
     }
     if (!isset($word))
         header('Location: vocabularyController.php?word='.$_GET["word"]);
