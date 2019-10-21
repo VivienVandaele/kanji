@@ -6,9 +6,9 @@ include_once("Word.php");
 
 if(isset($_POST["word"])){
     if($_GET["word"]==1)
-        addWord($_POST["word"], preg_replace("/'/", "\\'", $_POST["meaning"]));
+        addWordW($_POST["word"], preg_replace("/'/", "\\'", $_POST["meaning"]));
     else
-        addSentence($_POST["word"], preg_replace("/'/", "\\'", $_POST["meaning"]));
+        addSentenceW($_POST["word"], preg_replace("/'/", "\\'", $_POST["meaning"]));
 }
 
 if($_GET["word"]==1) {
