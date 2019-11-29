@@ -1,4 +1,5 @@
 <?php
+    error_reporting(E_ALL ^ E_WARNING);
     include_once("header.html");
     include_once("Kanji.php");
     include_once("Word.php");

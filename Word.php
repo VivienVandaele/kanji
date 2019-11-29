@@ -66,7 +66,7 @@ class Word{
     }
 
     public function reviewlater(){
-        connection::getbdd()->exec("update Vocabulary set datenext='".date('Y-m-d H:i:s', strtotime('+0day', date(time())))."', day='".$this->day."' where id='".$this->id."'");
+        connection::getbdd()->exec("update Vocabulary set datenext='".date('Y-m-d H:i:s', strtotime('+10minutes', date(time())))."', day='".$this->day."' where id='".$this->id."'");
     }
 
     public function setTestable($testable){
@@ -169,8 +169,18 @@ function getAllToTestKanjiSentenceW(){
 
 function getAllWordsW(){
     $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE word=1 ORDER BY dateNext");
-    while($data = $req->fetch())
+    while($data = $req->fetch()){
         $array[] = new Word($data['id'], $data['chara'], $data['meaning'], $data['day'], $data['dateNext'], $data['toTestKanji'], $data['toTestMeaning'], $data['testable'], $data['word']);
+    }
+    if(isset($array)) return $array;
+}
+
+function getAllWordsReviewW(){
+    $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE word=1 ORDER BY dateNext");
+    while($data = $req->fetch()){
+        if($data['dateNext']<date('Y-m-d H:i:s', strtotime('+0day', date(time()))))
+            $array[] = new Word($data['id'], $data['chara'], $data['meaning'], $data['day'], $data['dateNext'], $data['toTestKanji'], $data['toTestMeaning'], $data['testable'], $data['word']);
+    }
     if(isset($array)) return $array;
 }
 
@@ -196,7 +206,8 @@ function getWordW($id){
 }
 
 function getReviewWordW(){
-    $word = getAllWordsW()[0];
+    $allWords =  getAllWordsReviewW();
+    $word = $allWords[rand(0, count($allWords)-1)];
     if(isset($word)){
         if($word->getDateNext()<date('Y-m-d H:i:s', strtotime('+0day', date(time()))))
             return $word;
