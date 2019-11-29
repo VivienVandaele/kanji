@@ -125,7 +125,8 @@ function getOneToTestMeaningWordW(){
 
 function getOneToTestKanjiWordW(){
     $allKanji = getAllToTestKanjiWordW();
-    return $allKanji[rand(0, count($allKanji)-1)];
+    if(isset($allKanji)) return $allKanji[rand(0, count($allKanji)-1)];
+    return 0;
 }
 
 function getAllToTestMeaningWordW(){
