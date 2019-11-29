@@ -169,9 +169,8 @@ function getAllToTestKanjiSentenceW(){
 
 function getAllWordsW(){
     $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE word=1 ORDER BY dateNext");
-    while($data = $req->fetch()){
+    while($data = $req->fetch())
         $array[] = new Word($data['id'], $data['chara'], $data['meaning'], $data['day'], $data['dateNext'], $data['toTestKanji'], $data['toTestMeaning'], $data['testable'], $data['word']);
-    }
     if(isset($array)) return $array;
 }
 
