@@ -24,9 +24,8 @@
         else
             $word = getOneToTestKanjiSentenceW();
     }
-    if (!isset($word))
+    if (!isset($word) || $word == NULL)
         header('Location: vocabularyController.php?word='.$_GET["word"]);
-    else{
 ?>
 
 <script>
@@ -35,9 +34,6 @@
     Mousetrap.bind('c', function() { document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>' });
     Mousetrap.bind('m', function() { document.location.href='vocabularyController.php?word=1' });
 </script>
-<?php
-}
-?>
 
 <body onload="<?php if($_GET["test"]==1) { ?>setVisibilityTestMeaning() <?php }else{?>setVisibilityTestKanji()<?php }?>">
     <div id="page" class="page">
