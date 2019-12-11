@@ -24,7 +24,7 @@
         else
             $word = getOneToTestKanjiSentenceW();
     }
-    if (!isset($word) || $word == NULL)
+    if (!isset($word) || $word == null)
         header('Location: vocabularyController.php?word='.$_GET["word"]);
     else
         echo $word->getCharacter();
