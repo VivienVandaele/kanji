@@ -1,7 +1,6 @@
 <?php
     mb_internal_encoding("UTF-8");//Sets the internal character encoding to UTF-8, for mb_substr to work
     error_reporting(E_ALL ^ E_WARNING);
-    include_once("header.html");
     include_once("Word.php");
 
     if(isset($_GET["idV"])){
@@ -26,8 +25,7 @@
     }
     if (!isset($word) || $word == null)
         header('Location: vocabularyController.php?word='.$_GET["word"]);
-    else
-        echo $word->getCharacter();
+    include_once("header.html");
 ?>
 
 <script>
