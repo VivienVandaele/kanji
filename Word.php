@@ -120,13 +120,12 @@ include_once("Connection.php");
 
 function getOneToTestMeaningWordW(){
     $allKanji = getAllToTestMeaningWordW();
-    return $allKanji[rand(0, count($allKanji)-1)];
+    if(isset($allKanji)) return $allKanji[rand(0, count($allKanji)-1)];
 }
 
 function getOneToTestKanjiWordW(){
     $allKanji = getAllToTestKanjiWordW();
     if(isset($allKanji)) return $allKanji[rand(0, count($allKanji)-1)];
-    return 0;
 }
 
 function getAllToTestMeaningWordW(){
