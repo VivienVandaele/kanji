@@ -6,13 +6,13 @@
 
         <?php if(getNumberToTestKanji()>0 || getNumberToTestMeaning()>0 || getNombreARevoir($allKanji)>0){?>
             <div class="review">
-               <?php if(getNumberToTestMeaning()>0){ ?>
+               <?php if(getNumberToTestKanji()>0){ ?>
                 <div class="testMeaningHeader" onclick="document.location.href='test.php?test=2'">
-                    <span><?php echo getNumberToTestMeaning() ?></span>
-                </div>
-                <?php }if(getNumberToTestKanji()>0){ ?>
-                <div class="testKanjiHeader" onclick="document.location.href='test.php?test=1'">
                     <span><?php echo getNumberToTestKanji() ?></span>
+                </div>
+                <?php }if(getNumberToTestMeaning()>0){ ?>
+                <div class="testKanjiHeader" onclick="document.location.href='test.php?test=1'">
+                    <span><?php echo getNumberToTestMeaning() ?></span>
                 </div>
                 <?php } ?>
             </div>
