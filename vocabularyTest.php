@@ -26,6 +26,8 @@
     }
     if (!isset($word) || $word == NULL)
         header('Location: vocabularyController.php?word='.$_GET["word"]);
+    else
+        echo $word;
 ?>
 
 <script>
