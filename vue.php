@@ -26,7 +26,7 @@
             </div>
         <table class="table">
         <tr class="">
-            <td>SVG</td>
+            <td></td>
             <td>Meaning</td>
             <td>訓読み</td>
             <td>音読み</td>
