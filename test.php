@@ -83,7 +83,7 @@
     if(isset($allWords)){
         foreach ($allWords as $word){
             if (strpos($word->getCharacter(), $kanji->getCharacter()) !== false) {?>
-            <tr <?php echo "onclick=document.location.href='vocabularyReview.php?id=".$word->getId()."&word=1" ?> class="listKanji toHideTestMeaning toHideTestKanji"">
+            <tr <?php echo "onclick=document.location.href='vocabularyReview.php?id=".$word->getId()."&word=1'" ?> class="listKanji">
                 <td><?php echo $word->getCharacter() ?></td>
                 <td><?php echo $word->getMeaning() ?></td>
             </tr>
