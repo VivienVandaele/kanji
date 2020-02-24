@@ -1,6 +1,5 @@
 <?php
     error_reporting(E_ALL ^ E_WARNING);
-    include_once("header.html");
     include_once("Kanji.php");
     include_once("Word.php");
     $allWords = getAllWordsW();
@@ -8,6 +7,7 @@
         $kanji = getOneToTestMeaning();
         if (!isset($kanji))
             header('Location: index.php');
+        include_once("header.html");
         ?>
         <script>
             Mousetrap.bind('space', function() { setVisibilityTestMeaning() });
@@ -23,6 +23,7 @@
         $kanji = getOneToTestKanji();
         if (!isset($kanji))
             header('Location: index.php');
+        include_once("header.html");
         ?>
         <script>
             Mousetrap.bind('space', function() { setVisibilityTestKanji() });
