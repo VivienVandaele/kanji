@@ -87,6 +87,7 @@ class Kanji{
             else if($this->day==5) $this->day=7;
             else if($this->day==7) $this->day=10;
             else if($this->day==10) $this->day=15;
+            else if($this->day==15) $this->day=20;
             Connection::getBdd()->exec("UPDATE Kanji SET dateNext='".date('Y-m-d H:i:s', strtotime('+'.$this->day.'day', date(time())))."', day='".$this->day."' WHERE id='".$this->id."'");
         }
     }
