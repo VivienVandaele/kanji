@@ -44,7 +44,7 @@
                         <td class="reviewKanji"><span class="description">Word</span><br>
                         <?php
                             $str = $word->getCharacter();
-                            $strlen = strlen($str);
+                            $strlen = mb_strlen($str);
                             for( $i = 0; $i <= $strlen; $i++ ) {
                                 $char = mb_substr($str, $i, 1);
                                 echo "<a target='_blank' href='http://jisho.org/search/".$char." %23kanji'>".$char."</a>";

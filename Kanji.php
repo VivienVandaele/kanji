@@ -309,4 +309,7 @@ function getPreviousKanjiId($id){
     }
 }
 
+function isKanji($str) {
+    return preg_match('/[\x{4E00}-\x{9FBF}]/u', $str) > 0;
+}
 ?>
