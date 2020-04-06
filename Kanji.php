@@ -19,6 +19,7 @@ class Kanji{
     private $toTestKanji;
     private $toTestMeaning;
     private $testable;
+    private static $repetition = array(0, 1, 2, 3, 4, 5, 7, 10, 15, 20, 30, 45);
 
     public function __construct($id, $name, $character, $meaning, $kunyomi, $onyumi, $linkKanjiAlive, $day, $dateNext, $radicalChar, $radicalName, $radicalHiragana, $radicalMeaning, $strokes, $toTestKanji, $toTestMeaning, $testable){
         $this->id=$id;
@@ -80,6 +81,20 @@ class Kanji{
             Connection::getBdd()->exec("UPDATE Kanji SET dateNext='".date('Y-m-d H:i:s', strtotime('+10hours', date(time())))."', day='".$this->day."' WHERE id='".$this->id."'");
         }
         else{
+            $closest = null;
+            $key = null;
+            foreach (self::$repetition as $key_value => $value) {
+              if ($closest === null || abs($this->day - $closest) > abs($value - $this->day)) {
+                 $closest = $value;
+                 $key = $key_value;
+              }
+            }
+            $this->day = $closest;
+            if(count(self::$repetition) > $key+1){
+                $this->day = self::$repetition[$key+1];
+            }
+
+            /*
             if($this->day==0) $this->day=1;
             else if($this->day==1) $this->day=2;
             else if($this->day==2) $this->day=3;
@@ -91,14 +106,24 @@ class Kanji{
             else if($this->day==15) $this->day=20;
             else if($this->day==20) $this->day=30;
             else if($this->day==30) $this->day=45;
+             */
             Connection::getBdd()->exec("UPDATE Kanji SET dateNext='".date('Y-m-d H:i:s', strtotime('+'.$this->day.'day', date(time())))."', day='".$this->day."' WHERE id='".$this->id."'");
         }
     }
 
     public function fallback(){
-        if($this->day > -1){
-            $this->day--;
+        $closest = null;
+        $key = null;
+        foreach (self::$repetition as $key_value => $value) {
+          if ($closest === null || abs($this->day - $closest) > abs($value - $this->day)) {
+             $closest = $value;
+             $key = $key_value;
+          }
         }
+        if($key > 0){
+            $this->day = self::$repetition[$key-1];
+        }
+
         $this->setToTestMeaning(0);
         $this->setToTestKanji(0);
         Connection::getBdd()->exec("UPDATE Kanji SET dateNext='".date('Y-m-d H:i:s', strtotime('+1minutes', date(time())))."', day='".$this->day."' WHERE id='".$this->id."'");
