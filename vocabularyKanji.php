@@ -46,12 +46,13 @@ $allWords = getAllWordsW();
                     if(isKanji($char) and !isCharacterPresent($char)){
 require_once 'unirest-php-master/src/Unirest.php';
 Unirest\Request::verifyPeer(false);
-$response = Unirest\Request::get("https://kanjialive-api.p.mashape.com/api/public/kanji/".urlencode($char),
+$response = Unirest\Request::get("https://kanjialive-api.p.rapidapi.com/api/public/kanji/".urlencode($char),
   array(
-    "X-Mashape-Key" => "17JphCaAaGmshgo7F3QbDQNTwIS2p1rIt8hjsnf8pboxNEenCm"
+    "X-RapidAPI-Host" => "kanjialive-api.p.rapidapi.com",
+    "X-RapidAPI-Key" => "f0b6adaafbmshd39b9d4172c71ebp15da8ajsnd46863b81287"
   )
 );
-    $var = json_decode($response->raw_body,true);
+$var = json_decode($response->raw_body,true);
 if(isset($var["error"])){
     $class="danger";
 }
