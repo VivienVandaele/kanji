@@ -94,7 +94,7 @@ class Kanji{
                 $this->day = self::$repetition[$key+1];
             }
 
-            if(count(self::$repetition)-3 == $key){
+            if(count(self::$repetition)-3 <= $key){
                 $this->day += random_int(-2, 2);
             }
 

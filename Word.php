@@ -11,6 +11,7 @@ class Word{
     private $word;
     private $class;
     private $compteur;
+    private static $repetition = array(1, 2, 3, 4, 5, 7, 10, 15, 20, 30, 45);
 
     public function __construct($id, $character, $meaning, $day, $dateNext, $toTestKanji, $toTestMeaning, $testable, $word){
         $this->id=$id;
@@ -54,14 +55,22 @@ class Word{
     }
 
     public function update(){
-        if($this->day==1) $this->day=2;
-        else if($this->day==2) $this->day=3;
-        else if($this->day==3) $this->day=4;
-        else if($this->day==4) $this->day=5;
-        else if($this->day==5) $this->day=6;
-        else if($this->day==6) $this->day=7;
-        else if($this->day==7) $this->day=10;
-        else if($this->day==10) $this->day=15;
+        $closest = null;
+        $key = null;
+        foreach (self::$repetition as $key_value => $value) {
+          if ($closest === null || abs($this->day - $closest) > abs($value - $this->day)) {
+             $closest = $value;
+             $key = $key_value;
+          }
+        }
+        $this->day = $closest;
+        if(count(self::$repetition) > $key+1){
+            $this->day = self::$repetition[$key+1];
+        }
+
+        if(count(self::$repetition)-3 <= $key){
+            $this->day += random_int(-2, 2);
+        }
         Connection::getBdd()->exec("UPDATE Vocabulary SET dateNext='".date('Y-m-d H:i:s', strtotime('+'.$this->day.'day', date(time())))."', day='".$this->day."' WHERE id='".$this->id."'");
     }
 
