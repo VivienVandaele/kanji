@@ -11,7 +11,7 @@ class Word{
     private $word;
     private $class;
     private $compteur;
-    private static $repetition = array(1, 2, 3, 4, 5, 7, 10, 15, 20, 30, 45);
+    private static $repetition = array(0, 1, 2, 3, 5, 8, 12, 18, 27, 41, 62);
 
     public function __construct($id, $character, $meaning, $day, $dateNext, $toTestKanji, $toTestMeaning, $testable, $word){
         $this->id=$id;
