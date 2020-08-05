@@ -13,13 +13,13 @@
 
     if($_GET["test"]==1){
         if($_GET["word"]==1)
-            $word = getOneToTestMeaningWordW();
+            $word = getOneToTestMeaningWordW($_GET["ban"]);
         else
             $word = getOneToTestMeaningSentenceW();
     }
     else{
         if($_GET["word"]==1)
-            $word = getOneToTestKanjiWordW();
+            $word = getOneToTestKanjiWordW($_GET["ban"]);
         else
             $word = getOneToTestKanjiSentenceW();
     }
@@ -31,7 +31,7 @@
 <script>
     Mousetrap.bind('space', function() { <?php if($_GET["test"]==1){ ?>setVisibilityTestMeaning()  <?php }   else{ ?> setVisibilityTestKanji() <?php } ?> });
     Mousetrap.bind('v', function() { document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>&idV=<?php echo $word->getId() ?>' });
-    Mousetrap.bind('c', function() { document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>' });
+    Mousetrap.bind('c', function() { document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>&ban=<?php echo $word->getId() ?>' });
     Mousetrap.bind('m', function() { document.location.href='vocabularyController.php?word=1' });
 </script>
 
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="boutons">
-            <button id="boutonLater" onclick="document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>'" onmouseout="changeColorGlyphiconLater()" onmouseover="changeColorGlyphiconLater()" type="button" class="boutonLater btn btn-lg btn-default toHideTestMeaning toHideTestKanji" aria-label="Left Align">
+            <button id="boutonLater" onclick="document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>&ban=<?php echo $word->getId() ?>'" onmouseout="changeColorGlyphiconLater()" onmouseover="changeColorGlyphiconLater()" type="button" class="boutonLater btn btn-lg btn-default toHideTestMeaning toHideTestKanji" aria-label="Left Align">
                 <span id="glyphiconBoutonLater" class="glyphicon glyphicon-remove glyphiconLater" aria-hidden="true"></span>
             </button>
             <button id="boutonSee" <?php if($_GET["test"]==1){ echo "onclick=setVisibilityTestMeaning()"; } else{ echo "onclick=setVisibilityTestKanji()"; } ?> onmouseout="" onmouseover="" type="button" class="boutonSee btn btn-lg btn-default" aria-label="Left Align">

@@ -127,14 +127,26 @@ class Word{
 
 include_once("Connection.php");
 
-function getOneToTestMeaningWordW(){
+function getOneToTestMeaningWordW($ban){
     $allKanji = getAllToTestMeaningWordW();
-    if(isset($allKanji)) return $allKanji[rand(0, count($allKanji)-1)];
+    if(isset($allKanji)){
+        $kanji = $allKanji[rand(0, count($allKanji)-1)];
+        while(count($allKanji) > 1 && $kanji->getId() == $ban) {
+            $kanji = $allKanji[rand(0, count($allKanji)-1)];
+        }
+    }
+    if(isset($kanji)) return $kanji;
 }
 
-function getOneToTestKanjiWordW(){
+function getOneToTestKanjiWordW($ban){
     $allKanji = getAllToTestKanjiWordW();
-    if(isset($allKanji)) return $allKanji[rand(0, count($allKanji)-1)];
+    if(isset($allKanji)){
+        $kanji = $allKanji[rand(0, count($allKanji)-1)];
+        while(count($allKanji) > 1 && $kanji->getId() == $ban) {
+            $kanji = $allKanji[rand(0, count($allKanji)-1)];
+        }
+    }
+    if(isset($kanji)) return $kanji;
 }
 
 function getAllToTestMeaningWordW(){
@@ -153,12 +165,12 @@ function getAllToTestKanjiWordW(){
 
 function getOneToTestMeaningSentenceW(){
     $allKanji = getAllToTestMeaningSentenceW();
-    return $allKanji[rand(0, count($allKanji)-1)];
+#    return $allKanji[rand(0, count($allKanji)-1)];
 }
 
 function getOneToTestKanjiSentenceW(){
     $allKanji = getAllToTestKanjiSentenceW();
-    return $allKanji[rand(0, count($allKanji)-1)];
+#    return $allKanji[rand(0, count($allKanji)-1)];
 }
 
 function getAllToTestMeaningSentenceW(){
