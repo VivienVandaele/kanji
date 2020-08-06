@@ -13,13 +13,19 @@
 
     if($_GET["test"]==1){
         if($_GET["word"]==1)
-            $word = getOneToTestMeaningWordW($_GET["ban"]);
+            if($_GET["ban"]==1)
+                $word = getOneToTestMeaningWordW($_GET["ban"]);
+            else
+                $word = getOneToTestMeaningWordW("");
         else
             $word = getOneToTestMeaningSentenceW();
     }
     else{
         if($_GET["word"]==1)
-            $word = getOneToTestKanjiWordW($_GET["ban"]);
+            if($_GET["ban"]==1)
+                $word = getOneToTestKanjiWordW($_GET["ban"]);
+            else
+                $word = getOneToTestKanjiWordW("");
         else
             $word = getOneToTestKanjiSentenceW();
     }
