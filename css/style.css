@@ -1,12 +1,17 @@
 body{
     --color-background: white;
+    --color-background-danger: #bf616a;
+    --color-background-warning: #ebcb8b;
     --font-color: rgb(51, 51, 51);
     background-color: var(--color-background) !important;
+    background-color-danger: var(--color-background) !important;
 }
 
 .nightMode{
-    --color-background: #2f343f;
-    --font-color: rgb(251, 251, 251);
+    --color-background: #434c5e;
+    --color-background-danger: #282C34;
+    --color-background-warning: #3b4252;
+	--font-color: #d8dee9;
 }
 
 .page {
@@ -41,14 +46,17 @@ body{
 
 /*
  * For night mode
-.table > tbody >  .danger > td {
-    background-color: #3f444f !important;
-    color: white;
-}
 */
+.table > tbody >  .danger > td {
+    background-color: var(--color-background-danger) !important;
+}
+
+.table > tbody >  .warning > td {
+    background-color: var(--color-background-warning) !important;
+}
 
 .table > tbody > tr > td {
-    color: rgb(51, 51, 51);
+    color: var(--font-color);
 }
 
 td{
@@ -82,8 +90,7 @@ table{
 .reviewKanjiHeader{
     text-align: center;
     padding: 5px;
-    background: indianred;
-    border-bottom: 2px solid brown;
+    background: #bf616a;
     width: 100%;
 }
 
@@ -97,9 +104,7 @@ table{
 .testKanjiHeader{
     text-align: center;
     padding: 5px;
-    background: seagreen;
-    border-bottom: 2px solid darkgreen;
-    border-left: 2px solid darkgreen;
+    background: #a3be8c;
     width: 100%;
 }
 .testKanjiHeader:hover{
@@ -112,9 +117,7 @@ table{
 .testMeaningHeader{
     text-align: center;
     padding: 5px;
-    background: #006699;
-    border-bottom: 2px solid darkblue;
-    border-left: 2px solid darkblue;
+    background: #5e81ac;
     width: 100%;
 }
 .testMeaningHeader:hover{
