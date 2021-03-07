@@ -11,7 +11,8 @@ class Word{
     private $word;
     private $class;
     private $compteur;
-    private static $repetition = array(0, 1, 2, 3, 5, 8, 12, 18, 27, 41, 62);
+	# Fibonacci sequence
+    private static $repetition = array(0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377);
 
     public function __construct($id, $character, $meaning, $day, $dateNext, $toTestKanji, $toTestMeaning, $testable, $word){
         $this->id=$id;
@@ -24,6 +25,12 @@ class Word{
         $this->testable=$testable;
         $this->word=$word;
         $this->calculTime();
+
+
+        if($this->getDateNext()<date('Y-m-d H:i:s', strtotime('+0day', date(time()))) && $this->getToTestMeaning() == 0 && $this->getToTestKanji() == 0){
+            $this->setToTestMeaning(1);
+            $this->setToTestKanji(1);
+        }
     }
 
     public function calculTime(){
@@ -68,14 +75,32 @@ class Word{
             $this->day = self::$repetition[$key+1];
         }
 
-        if(count(self::$repetition)-3 <= $key){
-            $this->day += random_int(-2, 2);
+        #if(count(self::$repetition)-3 <= $key){
+		$this->day += random_int(-floor($this->day*0.05), floor($this->day*0.05));
+        #}
+        Connection::getBdd()->exec("UPDATE Vocabulary SET dateNext='".date('Y-m-d H:i:s', strtotime('+'.$this->day.'day', date(time())))."', day='".$this->day."' WHERE id='".$this->id."'");
+    }
+
+    public function fallback(){
+        $closest = null;
+        $key = null;
+        foreach (self::$repetition as $key_value => $value) {
+          if ($closest === null || abs($this->day - $closest) > abs($value - $this->day)) {
+             $closest = $value;
+             $key = $key_value;
+          }
         }
+        if($key > 0){
+            $this->day = self::$repetition[$key-1];
+        }
+
+        $this->setToTestMeaning(0);
+        $this->setToTestKanji(0);
         Connection::getBdd()->exec("UPDATE Vocabulary SET dateNext='".date('Y-m-d H:i:s', strtotime('+'.$this->day.'day', date(time())))."', day='".$this->day."' WHERE id='".$this->id."'");
     }
 
     public function reviewlater(){
-        connection::getbdd()->exec("update Vocabulary set datenext='".date('Y-m-d H:i:s', strtotime('+10minutes', date(time())))."', day='".$this->day."' where id='".$this->id."'");
+        connection::getbdd()->exec("update Vocabulary set datenext='".date('Y-m-d H:i:s', strtotime('+5minutes', date(time())))."', day='".$this->day."' where id='".$this->id."'");
     }
 
     public function setTestable($testable){
@@ -126,6 +151,7 @@ class Word{
 }
 
 include_once("Connection.php");
+include_once("Chart.php");
 
 function getOneToTestMeaningWordW($ban){
     $allKanji = getAllToTestMeaningWordW();
@@ -211,6 +237,7 @@ function getAllSentencesW(){
 }
 
 function addWordW($chara, $meaning){
+	incrementNewWords();
     Connection::getBdd()->exec("INSERT INTO Vocabulary (chara, meaning, day, dateNext, word) VALUES ('".$chara."', '".$meaning."', 1, '".date('Y-m-d H:i:s', strtotime('+1day', date(time())))."', 1)");
 }
 
@@ -279,4 +306,29 @@ function getNumberToTestKanjiW($all){
     return $nb;
 }
 
+function getNumberWords(){
+    return count(getAllWordsW());
+}
+
+function getWorkloadWord(){
+    $req = Connection::getBdd()->query("SELECT * FROM Vocabulary WHERE word=1 ORDER BY dateNext");
+	$total = 0;
+    $repetition = array(0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377);
+	while($data = $req->fetch()){
+		if($data['dateNext']<date('Y-m-d H:i:s', strtotime('+60day', date(time())))){
+			$closest = null;
+			$key = null;
+			foreach ($repetition as $key_value => $value) {
+			  if ($closest === null || abs($data['day'] - $closest) > abs($value - $date['day'])) {
+				 $closest = $value;
+				 $key = $key_value;
+			  }
+			}
+			if($key < 10){
+				$total = $total + 10 - $key;
+			}
+		}
+	}
+	return $total/60;
+}
 ?>

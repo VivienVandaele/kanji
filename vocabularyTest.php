@@ -3,43 +3,36 @@
     error_reporting(E_ALL ^ E_WARNING);
     include_once("Word.php");
 
-    if(isset($_GET["idV"])){
-        $wordToUpdate = getWordW($_GET["idV"]);
-        if($_GET["test"]==1)
-            $wordToUpdate->setToTestMeaning(0);
-        else
-            $wordToUpdate->setToTestKanji(0);
-    }
 
-    if($_GET["test"]==1){
-        if($_GET["word"]==1)
-            if(isset($_GET["ban"]))
-                $word = getOneToTestMeaningWordW($_GET["ban"]);
-            else
-                $word = getOneToTestMeaningWordW("");
-        else
-            $word = getOneToTestMeaningSentenceW();
+    if($_GET["test"]==1) {
+		$word = getOneToTestMeaningWordW("");
+        if (!isset($word))
+			header('Location: vocabularyController.php?word='.$_GET["word"]);
+        include_once("header.html");
+        ?>
+        <script>
+			Mousetrap.bind('space', function() { <?php if($_GET["test"]==1){ ?>setVisibilityTestMeaning()  <?php }   else{ ?> setVisibilityTestKanji() <?php } ?> });
+            Mousetrap.bind('c', function() { redirectWordMeaningNoAjax(<?php echo $word->getId() ?>) });
+            Mousetrap.bind('v', function() { redirectWordMeaning(<?php echo $word->getId() ?>) });
+			Mousetrap.bind('m', function() { document.location.href='vocabularyController.php?word=1' });
+        </script>
+        <?php
     }
     else{
-        if($_GET["word"]==1)
-            if(isset($_GET["ban"]))
-                $word = getOneToTestKanjiWordW($_GET["ban"]);
-            else
-                $word = getOneToTestKanjiWordW("");
-        else
-            $word = getOneToTestKanjiSentenceW();
+		$word = getOneToTestKanjiWordW("");
+        if (!isset($word))
+            header('Location: index.php');
+        include_once("header.html");
+        ?>
+        <script>
+			Mousetrap.bind('space', function() { <?php if($_GET["test"]==1){ ?>setVisibilityTestMeaning()  <?php }   else{ ?> setVisibilityTestKanji() <?php } ?> });
+            Mousetrap.bind('c', function() { redirectWordKanjiNoAjax(<?php echo $word->getId() ?>) });
+            Mousetrap.bind('v', function() { redirectWordKanji(<?php echo $word->getId() ?>) });
+			Mousetrap.bind('m', function() { document.location.href='vocabularyController.php?word=1' });
+        </script>
+        <?php
     }
-    if (!isset($word) || $word == null)
-        header('Location: vocabularyController.php?word='.$_GET["word"]);
-    include_once("header.html");
 ?>
-
-<script>
-    Mousetrap.bind('space', function() { <?php if($_GET["test"]==1){ ?>setVisibilityTestMeaning()  <?php }   else{ ?> setVisibilityTestKanji() <?php } ?> });
-    Mousetrap.bind('v', function() { document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>&idV=<?php echo $word->getId() ?>' });
-    Mousetrap.bind('c', function() { document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>&ban=<?php echo $word->getId() ?>' });
-    Mousetrap.bind('m', function() { document.location.href='vocabularyController.php?word=1' });
-</script>
 
 <body onload="<?php if($_GET["test"]==1) { ?>setVisibilityTestMeaning() <?php }else{?>setVisibilityTestKanji()<?php }?>">
     <div id="page" class="page">
@@ -64,13 +57,13 @@
             </div>
         </div>
         <div class="boutons">
-            <button id="boutonLater" onclick="document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>&ban=<?php echo $word->getId() ?>'" onmouseout="changeColorGlyphiconLater()" onmouseover="changeColorGlyphiconLater()" type="button" class="boutonLater btn btn-lg btn-default toHideTestMeaning toHideTestKanji" aria-label="Left Align">
+            <button id="boutonLater" <?php if($_GET["test"]==1){ echo "onclick=redirectWordMeaningNoAjax(".$word->getId().")"; } else{ echo "onclick=redirectWordKanjiNoAjax(".$word->getId().")"; } ?>  onmouseout="changeColorGlyphiconLater()" onmouseover="changeColorGlyphiconLater()" type="button" class="boutonLater btn btn-lg btn-default toHideTestMeaning toHideTestKanji" aria-label="Left Align">
                 <span id="glyphiconBoutonLater" class="glyphicon glyphicon-remove glyphiconLater" aria-hidden="true"></span>
             </button>
             <button id="boutonSee" <?php if($_GET["test"]==1){ echo "onclick=setVisibilityTestMeaning()"; } else{ echo "onclick=setVisibilityTestKanji()"; } ?> onmouseout="" onmouseover="" type="button" class="boutonSee btn btn-lg btn-default" aria-label="Left Align">
                 <span id="glyphiconBoutonLater" class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
             </button>
-            <button id="boutonOk" onclick="document.location.href='vocabularyTest.php?word=<?php echo $_GET["word"] ?>&test=<?php echo $_GET["test"] ?>&idV=<?php echo $word->getId() ?>'" onmouseout="changeColorGlyphiconOk()" onmouseover="changeColorGlyphiconOk()" type="button" class="boutonOk btn btn-default btn-lg toHideTestMeaning toHideTestKanji" aria-label="Left Align">
+            <button id="boutonOk" <?php if($_GET["test"]==1){ echo "onclick=redirectWordMeaning(".$word->getId().")"; } else{ echo "onclick=redirectWordKanji(".$word->getId().")"; } ?> onmouseout="changeColorGlyphiconOk()" onmouseover="changeColorGlyphiconOk()" type="button" class="boutonOk btn btn-default btn-lg toHideTestMeaning toHideTestKanji" aria-label="Left Align">
                 <span id="glyphiconBoutonOk" class="glyphicon glyphicon-ok glyphiconOk" aria-hidden="true"></span>
             </button>
         </div>

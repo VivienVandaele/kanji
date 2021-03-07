@@ -9,8 +9,8 @@ body{
 
 .nightMode{
     --color-background: #434c5e;
-    --color-background-danger: #282C34;
-    --color-background-warning: #3b4252;
+    --color-background-danger: #bf616a;
+    --color-background-warning: #d08770;
 	--font-color: #d8dee9;
 }
 
@@ -67,6 +67,7 @@ td{
 table{
     margin-top: 30px;
     width: 100%;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);*/
 }
 
 .page > table{
@@ -275,4 +276,53 @@ table{
     margin: 0;
     padding: 0;
     font-size: 25px;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.styled-table tr:first-child {
+    background-color: #5e81ac;
+    font-size: 1.1em;
+	font-weight: bold;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #5e81ac;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.styled-hr {
+	height: 1px;
+	box-shadow: 0px 0px 1px 0px #a3be8c;
+	width: 80%;
+	margin-top: 70px;
+	margin-bottom: 70px;
+	background-color: #a3be8c;
+	border: 0;
 }

@@ -71,17 +71,53 @@ function redirectMeaning(id){
     });
 }
 
+function redirectSentenceNoAjax(id){
+    $.get("ajaxSentenceUpdate.php?id="+id+"&fallback=true", function (){
+        window.location.href = "sentenceTest.php";
+    });
+}
+
+function redirectSentence(id){
+    $.get("ajaxSentenceUpdate.php?id="+id, function (){
+        window.location.href = "sentenceTest.php";
+    });
+}
+
 function redirectKanjiNoAjax(id){
-    setVisibilityTestKanji();
+	//setVisibilityTestKanji();
     $.get("ajaxUpdate.php?id="+id+"&fallback=true&flag2=false", function (){
         window.location.href = "test.php?test=2";
     });
 }
 
+function redirectWordKanji(id){
+    $.get("ajaxWordUpdate.php?id="+id+"&flag2=false", function (){
+        window.location.href = "vocabularyTest.php?test=2&word=1";
+    });
+}
+
+function redirectWordMeaning(id){
+    $.get("ajaxWordUpdate.php?id="+id+"&flag2=true", function (){
+        window.location.href = "vocabularyTest.php?test=1&word=1";
+    });
+}
+
 function redirectMeaningNoAjax(id){
-    setVisibilityTestMeaning();
+    //setVisibilityTestMeaning();
     $.get("ajaxUpdate.php?id="+id+"&fallback=true&flag2=true", function (){
         window.location.href = "test.php?test=1";
+    });
+}
+
+function redirectWordKanjiNoAjax(id){
+    $.get("ajaxWordUpdate.php?id="+id+"&fallback=true&flag2=false", function (){
+        window.location.href = "vocabularyTest.php?test=2&word=1";
+    });
+}
+
+function redirectWordMeaningNoAjax(id){
+    $.get("ajaxWordUpdate.php?id="+id+"&fallback=true&flag2=true", function (){
+        window.location.href = "vocabularyTest.php?test=1&word=1";
     });
 }
 

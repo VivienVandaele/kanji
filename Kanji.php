@@ -19,7 +19,8 @@ class Kanji{
     private $toTestKanji;
     private $toTestMeaning;
     private $testable;
-    private static $repetition = array(0, 1, 2, 3, 5, 8, 12, 18, 27, 41, 62);
+	# Fibonacci sequence
+    private static $repetition = array(0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377);
 
     public function __construct($id, $name, $character, $meaning, $kunyomi, $onyumi, $linkKanjiAlive, $day, $dateNext, $radicalChar, $radicalName, $radicalHiragana, $radicalMeaning, $strokes, $toTestKanji, $toTestMeaning, $testable){
         $this->id=$id;
@@ -94,9 +95,9 @@ class Kanji{
                 $this->day = self::$repetition[$key+1];
             }
 
-            if(count(self::$repetition)-3 <= $key){
-                $this->day += random_int(-2, 2);
-            }
+            #if(count(self::$repetition)-7 <= $key){
+			$this->day += random_int(-floor($this->day*0.05), floor($this->day*0.05));
+			#}
 
             /*
             if($this->day==0) $this->day=1;
@@ -130,8 +131,9 @@ class Kanji{
 
         $this->setToTestMeaning(0);
         $this->setToTestKanji(0);
-        Connection::getBdd()->exec("UPDATE Kanji SET dateNext='".date('Y-m-d H:i:s', strtotime('+1minutes', date(time())))."', day='".$this->day."' WHERE id='".$this->id."'");
+		Connection::getBdd()->exec("UPDATE Kanji SET dateNext='".date('Y-m-d H:i:s', strtotime('+'.$this->day.'day', date(time())))."', day='".$this->day."' WHERE id='".$this->id."'");
     }
+
 
     public function reviewlater(){
         connection::getbdd()->exec("update Kanji set datenext='".date('Y-m-d H:i:s', strtotime('+1minutes', date(time())))."', day='".$this->day."' where id='".$this->id."'");
@@ -225,6 +227,7 @@ class Kanji{
 }
 
 include_once("Connection.php");
+include_once("Chart.php");
 
 function getNombreARevoir($allKanji){
     if(isset($allKanji)){
@@ -269,6 +272,7 @@ function getOneToTestKanji(){
 }
 
 function addKanji($name, $character, $meaning, $kunyomi, $onyomi, $linkKanjiAlive, $radicalChar, $radicalName, $radicalHiragana, $radicalMeaning, $strokes){
+	incrementNewKanji();
     Connection::getBdd()->exec("INSERT INTO Kanji(name, chara, meaning, kunyomi, onyomi, linkKanjiAlive, day, dateNext, radicalChar, radicalName, radicalHiragana, radicalMeaning, strokes) VALUES ('".$name."', '".$character."', '".$meaning."', '".$kunyomi."', '".$onyomi."', '".$linkKanjiAlive."', -1, '".date('Y-m-d H:i:s', strtotime('+10minutes', date(time())))."', '".$radicalChar."', '".$radicalName."', '".$radicalHiragana."', '".$radicalMeaning."', '".$strokes."')");
 }
 
@@ -344,4 +348,31 @@ function getPreviousKanjiId($id){
 function isKanji($str) {
     return preg_match('/[\x{4E00}-\x{9FBF}]/u', $str) > 0;
 }
+
+function getNumberKanji(){
+    return count(getAllKanji());
+}
+
+function getWorkloadKanji(){
+    $req = Connection::getBdd()->query("SELECT * FROM Kanji ORDER BY dateNext");
+	$total = 0;
+    $repetition = array(0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377);
+	while($data = $req->fetch()){
+		if($data['dateNext']<date('Y-m-d H:i:s', strtotime('+60day', date(time())))){
+			$closest = null;
+			$key = null;
+			foreach ($repetition as $key_value => $value) {
+			  if ($closest === null || abs($data['day'] - $closest) > abs($value - $date['day'])) {
+				 $closest = $value;
+				 $key = $key_value;
+			  }
+			}
+			if($key < 10){
+				$total = $total + 10 - $key;
+			}
+		}
+	}
+	return $total/60;
+}
+
 ?>

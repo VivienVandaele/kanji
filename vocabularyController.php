@@ -3,7 +3,6 @@ include_once("header.html");
 include_once("Word.php");
 
 
-
 if(isset($_POST["word"])){
     if($_GET["word"]==1)
         addWordW($_POST["word"], preg_replace("/'/", "\\'", $_POST["meaning"]));
